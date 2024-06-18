@@ -9,7 +9,7 @@ import { initialState, variants } from "../lib/animations";
 import { motion } from "framer-motion";
 
 export default function VideoDisplay() {
-  const { data } = useSWR(`${API_BASE_URL}/videos?user_id=123`, fetcher);
+  const { data } = useSWR(`/api/videos`, fetcher);
   const [search, setSearch] = useState("");
 
   console.log(data);
