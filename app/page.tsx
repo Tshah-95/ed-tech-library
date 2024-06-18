@@ -2,12 +2,24 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import { animate, motion, useMotionValue, useTransform } from "framer-motion";
+import useSWR from "swr";
 
 const descriptors = ["sume", "verse", "tribute"];
 
+const fetcher = async (url: string) => {
+  const res = await fetch(url);
+  return res.json();
+};
+
 export default function Home() {
+  const { data } = useSWR(
+    "https://take-home-assessment-423502.uc.r.appspot.com/api/videos?user_id=123",
+    fetcher
+  );
   const [currDescriptor, setCurrDescriptor] = useState(0);
   const progress = useMotionValue(0);
+
+  console.log(data);
 
   useEffect(() => {
     // moves and fades the old text, then swaps the descriptors, and finishes the animation
@@ -25,13 +37,13 @@ export default function Home() {
 
     let interval: NodeJS.Timeout | null = null;
 
-    // Wait 3000ms for the first call as 1s is lost to the initial animation
+    // Wait extra for the first call as 3.5s are lost to the lines animating in
     const timeout = setTimeout(() => {
       animateText();
 
-      // Then start an interval to call the function every 2000ms
-      interval = setInterval(() => animateText(), 2000);
-    }, 3000);
+      // Then start an interval to animate the text with
+      interval = setInterval(() => animateText(), 2500);
+    }, 4000);
 
     return () => {
       if (interval !== null) {
@@ -47,7 +59,7 @@ export default function Home() {
   const promptX = useTransform(progress, [0, 0.5, 0.5, 1], [0, -20, 20, 0]);
 
   return (
-    <main className="flex min-h-screen flex-col items-center gap-12 md:gap-24 p-6 md:p-24 bg-custom-pattern bg-repeat">
+    <main className="flex min-h-screen flex-col items-center gap-12 md:gap-24 pt-6 md:pt-24">
       <Image
         src="/FULL_LOGO_WHITE.png"
         width={200}
@@ -90,6 +102,7 @@ export default function Home() {
           </motion.span>
         </motion.h1>
       </div>
+      <div className="w-full p-6 md:p-12 bg-slate-200 bg-opacity-40 h-[600px]"></div>
     </main>
   );
 }
@@ -107,7 +120,7 @@ const variants = {
       type: "spring",
       duration: 10,
       mass: 0.95,
-      delay: custom * 1 + 0.5,
+      delay: custom * 0.9 + 0.5,
     },
   }),
 };

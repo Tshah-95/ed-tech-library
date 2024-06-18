@@ -16,7 +16,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="bg-black">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className.concat("bg-repeat bg-move-left")}>
+        {children}
+      </body>
     </html>
   );
 }
