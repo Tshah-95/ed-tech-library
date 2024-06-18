@@ -5,7 +5,7 @@ import { fetcher } from "../lib/request";
 import { API_BASE_URL } from "../lib/constants";
 import Search from "./search";
 import { useState } from "react";
-import { initialState, variants } from "../page";
+import { initialState, variants } from "../lib/animations";
 import { motion } from "framer-motion";
 
 export default function VideoDisplay() {
