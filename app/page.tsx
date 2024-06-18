@@ -107,7 +107,7 @@ const variants = {
       type: "spring",
       duration: 10,
       mass: 0.95,
-      delay: custom * 1,
+      delay: custom * 1 + 0.5,
     },
   }),
 };
