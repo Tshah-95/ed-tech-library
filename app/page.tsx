@@ -1,6 +1,5 @@
 "use client";
 import { useEffect, useState } from "react";
-import { Timeout } from "timers";
 import Image from "next/image";
 import { animate, motion, useMotionValue, useTransform } from "framer-motion";
 
@@ -24,7 +23,7 @@ export default function Home() {
       });
     };
 
-    let interval: Timeout | null = null;
+    let interval: NodeJS.Timeout | null = null;
 
     // Wait 3000ms for the first call as 1s is lost to the initial animation
     const timeout = setTimeout(() => {
