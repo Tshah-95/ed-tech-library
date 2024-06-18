@@ -2,23 +2,24 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Custom background animation */
 @keyframes move-left {
   0% {
     background-position: 0 0;
   }
   100% {
-    background-position: 100vw 0;
+    background-position: 10000vw 0;
   }
 }
 
 /* 
   Right now this doesn't loop smoothly as the distance
-  moved isn't an even multiple of the width of the image
+  moved isn't an even multiple of the width of the image,
+  so i'm just setting it to move some wild distance
+  (unknown perfomance issues)
 */
 .bg-move-left {
   @apply bg-custom-pattern bg-repeat;
-  animation: move-left 50s linear infinite;
+  animation: move-left 5000s linear infinite;
 }
 
 body {
@@ -27,8 +28,8 @@ body {
 
 .text-outline {
   color: transparent;
-  -webkit-text-stroke-width: 1px; /* Adjust the width as needed */
-  -webkit-text-stroke-color: white; /* Adjust the color as needed */
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: white;
 }
 
 @layer utilities {

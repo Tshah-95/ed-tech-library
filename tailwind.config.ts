@@ -9,7 +9,7 @@ const config: Config = {
   theme: {
     extend: {
       backgroundImage: {
-        "custom-pattern": "url('/ed-tech-bg-2.png')",
+        "custom-pattern": "url('/ed_tech_bg.png')",
       },
       colors: {
         "brand-tertiary": "#53c5e0",

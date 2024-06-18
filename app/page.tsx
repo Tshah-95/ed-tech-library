@@ -2,24 +2,13 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import { animate, motion, useMotionValue, useTransform } from "framer-motion";
-import useSWR from "swr";
+import VideoDisplay from "./components/video-display";
 
 const descriptors = ["sume", "verse", "tribute"];
 
-const fetcher = async (url: string) => {
-  const res = await fetch(url);
-  return res.json();
-};
-
 export default function Home() {
-  const { data } = useSWR(
-    "https://take-home-assessment-423502.uc.r.appspot.com/api/videos?user_id=123",
-    fetcher
-  );
   const [currDescriptor, setCurrDescriptor] = useState(0);
   const progress = useMotionValue(0);
-
-  console.log(data);
 
   useEffect(() => {
     // moves and fades the old text, then swaps the descriptors, and finishes the animation
@@ -60,14 +49,21 @@ export default function Home() {
 
   return (
     <main className="flex min-h-screen flex-col items-center gap-12 md:gap-24 pt-6 md:pt-24">
-      <Image
-        src="/FULL_LOGO_WHITE.png"
-        width={200}
-        height={300}
-        alt="Learnwell Logo"
-        priority
-      />
-      <div className="flex flex-col items-center max-w-screen-md opacity-95 text-4xl md:text-6xl font-semibold text-center gap-3">
+      <motion.div
+        initial={initialState}
+        custom={3}
+        animate="slide"
+        variants={variants}
+      >
+        <Image
+          src="/FULL_LOGO_WHITE.png"
+          width={200}
+          height={300}
+          alt="Learnwell Logo"
+          priority
+        />
+      </motion.div>
+      <div className="flex flex-col opacity-95 text-3xl md:text-6xl lg:text-[84px] font-semibold gap-1 md:gap-2 p-6 md:p-12">
         <motion.h1
           className="text-brand-primary block"
           initial={initialState}
@@ -101,8 +97,28 @@ export default function Home() {
             {descriptors[currDescriptor]}
           </motion.span>
         </motion.h1>
+        <motion.div
+          initial={initialState}
+          custom={3}
+          animate="slide"
+          variants={variants}
+          className="mt-3 md:mt-5 flex items-center w-full gap-3"
+        >
+          <p className="text-slate-400 block text-sm md:text-lg lg:text-xl font-normal max-w-[35em]">
+            Welcome to the only open-source education platform built by
+            educators for the global learning community. Free. Forever. Always.
+          </p>
+          <Image
+            src="/books_edited.png"
+            width={100}
+            height={100}
+            alt="Learnwell Logo"
+            className="h-16 w-16 md:h-24 md:w-24 lg:h-32 lg:w-32"
+            priority
+          />
+        </motion.div>
       </div>
-      <div className="w-full p-6 md:p-12 bg-slate-200 bg-opacity-40 h-[600px]"></div>
+      <VideoDisplay />
     </main>
   );
 }
