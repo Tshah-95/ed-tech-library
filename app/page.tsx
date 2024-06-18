@@ -47,7 +47,7 @@ export default function Home() {
   const promptX = useTransform(progress, [0, 0.5, 0.5, 1], [0, -20, 20, 0]);
 
   return (
-    <main className="flex min-h-screen flex-col items-center gap-12 md:gap-24 p-6 md:p-24">
+    <main className="flex min-h-screen flex-col items-center gap-12 md:gap-24 p-6 md:p-24 bg-custom-pattern bg-repeat">
       <Image
         src="/FULL_LOGO_WHITE.png"
         width={200}
