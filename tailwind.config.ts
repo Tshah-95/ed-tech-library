@@ -9,9 +9,14 @@ const config: Config = {
   theme: {
     extend: {
       backgroundImage: {
-        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "gradient-conic":
-          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+        "custom-pattern": "url('/ed-tech-bg-2.png')",
+      },
+      colors: {
+        "brand-tertiary": "#53c5e0",
+        "brand-primary": "#3c948e",
+        "brand-secondary": "#fbb549",
+        "brand-black": "#3d6073",
+        "brand-green": "#4dbe9c",
       },
     },
   },

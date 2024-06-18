@@ -15,7 +15,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className="bg-custom-pattern bg-repeat">
       <body className={inter.className}>{children}</body>
     </html>
   );
