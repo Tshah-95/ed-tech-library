@@ -1,4 +1,4 @@
-This project was built for [this showcase](https://app.10foldhiring.com/showcase/1) by [Tejas Shah](https://www.linkedin.com/in/tejasshah95) and deployed [here](https://ed-tech-library.vercel.app/) on vercel.
+This project was built for [this showcase](https://app.10foldhiring.com/showcase/1) by [Tejas Shah](https://www.linkedin.com/in/tejasshah95) and deployed [here](https://ed-tech-library.vercel.app/) on vercel. If you have any questions feel free to email me at shaht5495@gmail.com
 
 I used a slew of packages. Primary ones for styling and animations were [TailwindCSS](https://tailwindcss.com/), [Framer Motion](https://www.framer.com/motion/), and [RadixUI](https://www.radix-ui.com/) (for the modal), [Heroicons](https://heroicons.com/) + [Radix Icons](https://www.radix-ui.com/icons) for my iconography, and [SWR](https://swr.vercel.app/) for front-end requests.
 
