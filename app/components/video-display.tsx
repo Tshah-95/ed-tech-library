@@ -3,7 +3,7 @@
 import useSWR from "swr";
 import { fetcher } from "../lib/request";
 import Search from "./search";
-import { memo, useState } from "react";
+import { memo, useCallback, useEffect, useState } from "react";
 import { initialState, variants } from "../lib/animations";
 import { motion } from "framer-motion";
 import { areSimilar } from "../lib/strings";
@@ -17,6 +17,7 @@ import Link from "next/link";
 import { CommentModal } from "./comment-modal";
 import { UploadIcon } from "@radix-ui/react-icons";
 import { VideoCreateModal } from "./video-create-modal";
+import { debounce } from "lodash";
 
 const MenuItem = ({
   icon,
@@ -42,13 +43,31 @@ const MenuItem = ({
 // when the branding assets animate on an interval
 const VideoDisplay = memo(function VidDisplay() {
   const { data } = useSWR<video[] | null>(`/api/videos`, fetcher);
-  const [search, setSearch] = useState("");
+  const [search, setSearch] = useState<string>("");
 
-  // Filter the data based on if the title or description is similar to the search query
+  // I'm using a 2nd search term so that the user can type without lag
+  // And we can update only the filtration when they stop typing
+  const [debouncedSearch, setDebouncedSearch] = useState<string>("");
+
+  // Create a debounced function using useCallback so it doesn't recreate
+  const debouncedSetSearch = useCallback(
+    debounce((search) => {
+      setDebouncedSearch(search);
+    }, 300),
+    []
+  );
+
+  // Update the debounced search term when the search term changes
+  useEffect(() => {
+    debouncedSetSearch(search);
+  }, [search, debouncedSetSearch]);
+
+  // Filter the data based on the debounced search term
   const filteredData = data?.filter(
     (video) =>
       validUrl.isWebUri(video.video_url) &&
-      (areSimilar(video.title, search) || areSimilar(video.description, search))
+      (areSimilar(video.title, debouncedSearch) ||
+        areSimilar(video.description, debouncedSearch))
   );
 
   return (
