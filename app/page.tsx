@@ -5,7 +5,7 @@ import { animate, motion, useMotionValue, useTransform } from "framer-motion";
 import VideoDisplay from "./components/video-display";
 import { initialState, variants } from "./lib/animations";
 
-const descriptors = ["sume", "verse", "tribute"];
+const descriptors = ["nnect", "sume", "verse", "tribute"];
 
 export default function Home() {
   const [currDescriptor, setCurrDescriptor] = useState(0);

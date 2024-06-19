@@ -3,7 +3,7 @@
 import useSWR from "swr";
 import { fetcher } from "../lib/request";
 import Search from "./search";
-import { useState } from "react";
+import { memo, useMemo, useState } from "react";
 import { initialState, variants } from "../lib/animations";
 import { motion } from "framer-motion";
 import { areSimilar } from "../lib/strings";
@@ -36,7 +36,9 @@ const MenuItem = ({
   </>
 );
 
-export default function VideoDisplay() {
+// Memoize the VideoDisplay component to prevent unnecessary re-renders
+// when the branding assets animate on an interval
+const VideoDisplay = memo(() => {
   const { data } = useSWR<video[] | null>(`/api/videos`, fetcher);
   const [search, setSearch] = useState("");
 
@@ -113,4 +115,6 @@ export default function VideoDisplay() {
       </div>
     </motion.div>
   );
-}
+});
+
+export default VideoDisplay;

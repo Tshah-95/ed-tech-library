@@ -5,6 +5,7 @@ import useSWR, { mutate } from "swr";
 import { fetcher } from "../lib/request";
 import { ChatBubbleLeftRightIcon } from "@heroicons/react/24/outline";
 import { ChatBubbleBottomCenterTextIcon } from "@heroicons/react/24/solid";
+import { USER_ID } from "../lib/constants";
 
 export const CommentModal = ({
   children,
@@ -19,6 +20,7 @@ export const CommentModal = ({
   );
   const [searchValue, setSearchValue] = useState("");
 
+  // Submit the new comment and refresh the comments to include it
   const onSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     fetch("/api/videos/comments", {
@@ -26,7 +28,7 @@ export const CommentModal = ({
       body: JSON.stringify({
         video_id: video.id,
         content: searchValue,
-        user_id: "123",
+        user_id: USER_ID,
       }),
     }).then(() => {
       mutate("/api/videos/comments?video_id=" + video.id);
@@ -34,7 +36,6 @@ export const CommentModal = ({
     setSearchValue("");
   };
 
-  console.log(data);
   return (
     <Dialog.Root>
       <Dialog.Trigger asChild>{children}</Dialog.Trigger>
