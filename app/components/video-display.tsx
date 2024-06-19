@@ -59,20 +59,16 @@ const VideoDisplay = memo(function VidDisplay() {
     >
       <div className="w-full flex flex-col items-center max-w-screen-2xl">
         <div className="w-full flex flex-col md:flex-row items-center">
-          <div className="flex flex-col border-b-2 border-r-0 border-brand-tertiary md:flex-1 md:border-r-2 md:border-b-0 w-full p-6">
+          <div className="flex flex-col md:flex-1 w-full p-6">
             <h1 className="text-3xl md:text-6xl text-center font-semibold text-slate-200">
               Find a Video
             </h1>
             <Search value={search} setValue={setSearch} />
           </div>
-          <div className="flex flex-col border-t-2 border-l-0 border-brand-tertiary md:flex-1 md:border-l-2 md:border-t-0 w-full p-6">
-            <h1 className="text-3xl md:text-6xl text-center font-semibold text-brand-tertiary">
+          <div className="flex flex-col justify-center border-t-2 border-l-0 border-brand-tertiary md:flex-1 md:border-l-2 md:border-t-0 w-full p-6">
+            <h1 className="text-3xl md:text-6xl text-center font-semibold text-brand-tertiary border-brand-tertiary border-2 px-3 py-5 md:px-6 md:py-10 border-dashed hover:bg-slate-800 hover:bg-opacity-40 rounded-md cursor-pointer">
               Or Upload
             </h1>
-            <p>
-              Something to upload a video with a title, description, and URL
-              will eventually go here
-            </p>
           </div>
         </div>
         <div className="grid grid-cols-1 xl:grid-cols-2 gap-6 mt-6 md:mt-12">
@@ -96,7 +92,7 @@ const VideoDisplay = memo(function VidDisplay() {
                   </div>
                   <div className="flex items-center justify-end gap-3">
                     <CommentModal video={video}>
-                      <div className="flex flex-col items-center gap-1">
+                      <div className="flex flex-col items-center gap-1 cursor-pointer">
                         <MenuItem
                           icon={<ChatBubbleLeftRightIcon className="h-6 w-6" />}
                           label="Comments"
