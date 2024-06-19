@@ -15,6 +15,7 @@ import {
 } from "@heroicons/react/24/outline";
 import Link from "next/link";
 import { CommentModal } from "./comment-modal";
+import { UploadIcon } from "@radix-ui/react-icons";
 
 const MenuItem = ({
   icon,
@@ -65,10 +66,11 @@ const VideoDisplay = memo(function VidDisplay() {
             </h1>
             <Search value={search} setValue={setSearch} />
           </div>
-          <div className="flex flex-col justify-center border-t-2 border-l-0 border-brand-tertiary md:flex-1 md:border-l-2 md:border-t-0 w-full p-6">
-            <h1 className="text-3xl md:text-6xl text-center font-semibold text-brand-tertiary border-brand-tertiary border-2 px-3 py-5 md:px-6 md:py-10 border-dashed hover:bg-slate-800 hover:bg-opacity-40 rounded-md cursor-pointer">
-              Or Upload
-            </h1>
+          <div className="flex flex-col justify-center items-center border-t-2 border-l-0 border-brand-tertiary md:flex-1 md:border-l-2 md:border-t-0 w-full p-6">
+            <div className="flex items-center gap-3 md:gap-5 lg:gap-7 text-3xl md:text-5xl lg:text-6xl text-center font-semibold max-w-lg text-brand-tertiary border-brand-tertiary border-2 p-6 md:p-12 border-dashed hover:bg-slate-700 hover:bg-opacity-40 rounded-md cursor-pointer">
+              <span>Or Upload</span>
+              <UploadIcon className="h-9 w-9 md:h-12 md:w-12 lg:h-16 lg:w-16 " />
+            </div>
           </div>
         </div>
         <div className="grid grid-cols-1 xl:grid-cols-2 gap-6 mt-6 md:mt-12">
