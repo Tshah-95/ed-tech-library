@@ -58,7 +58,23 @@ const VideoDisplay = memo(() => {
       className="w-full flex justify-center p-6 md:p-12 bg-slate-200 bg-opacity-40 min-h-[400px]"
     >
       <div className="w-full flex flex-col items-center max-w-screen-2xl">
-        <Search value={search} setValue={setSearch} />
+        <div className="w-full flex flex-col md:flex-row items-center">
+          <div className="flex flex-col border-b-2 border-r-0 border-brand-tertiary md:flex-1 md:border-r-2 md:border-b-0 w-full p-6">
+            <h1 className="text-3xl md:text-6xl text-center font-semibold text-slate-200">
+              Find a Video
+            </h1>
+            <Search value={search} setValue={setSearch} />
+          </div>
+          <div className="flex flex-col border-t-2 border-l-0 border-brand-tertiary md:flex-1 md:border-l-2 md:border-t-0 w-full p-6">
+            <h1 className="text-3xl md:text-6xl text-center font-semibold text-brand-tertiary">
+              Or Upload
+            </h1>
+            <p>
+              Something to upload a video with a title, description, and URL
+              will eventually go here
+            </p>
+          </div>
+        </div>
         <div className="grid grid-cols-1 xl:grid-cols-2 gap-6 mt-6 md:mt-12">
           {filteredData &&
             filteredData.map((video) => (

@@ -20,7 +20,7 @@ export default function Search({
   const setSearchValue = setValue ?? setSearch;
 
   return (
-    <div className="relative mt-5 max-w-md w-full">
+    <div className="relative mt-5 mx-auto max-w-md w-full">
       <label htmlFor="search" className="sr-only">
         Search
       </label>
