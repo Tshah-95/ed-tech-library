@@ -3,7 +3,7 @@
 import useSWR from "swr";
 import { fetcher } from "../lib/request";
 import Search from "./search";
-import { memo, useMemo, useState } from "react";
+import { memo, useState } from "react";
 import { initialState, variants } from "../lib/animations";
 import { motion } from "framer-motion";
 import { areSimilar } from "../lib/strings";
@@ -67,10 +67,13 @@ const VideoDisplay = memo(function VidDisplay() {
             <Search value={search} setValue={setSearch} />
           </div>
           <div className="flex flex-col justify-center items-center border-t-2 border-l-0 border-brand-tertiary md:flex-1 md:border-l-2 md:border-t-0 w-full p-6">
-            <div className="flex items-center gap-3 md:gap-5 lg:gap-7 text-3xl md:text-5xl lg:text-6xl text-center font-semibold max-w-lg text-brand-tertiary border-brand-tertiary border-2 p-6 md:p-12 border-dashed hover:bg-slate-700 hover:bg-opacity-40 rounded-md cursor-pointer">
+            <button
+              type="button"
+              className="flex items-center gap-3 md:gap-5 lg:gap-7 text-3xl md:text-5xl lg:text-6xl text-center font-semibold max-w-lg text-brand-tertiary border-brand-tertiary border-2 p-6 md:p-12 border-dashed hover:bg-slate-700 hover:bg-opacity-40 rounded-md"
+            >
               <span>Or Upload</span>
               <UploadIcon className="h-9 w-9 md:h-12 md:w-12 lg:h-16 lg:w-16 " />
-            </div>
+            </button>
           </div>
         </div>
         <div className="grid grid-cols-1 xl:grid-cols-2 gap-6 mt-6 md:mt-12">
@@ -94,13 +97,13 @@ const VideoDisplay = memo(function VidDisplay() {
                   </div>
                   <div className="flex items-center justify-end gap-3">
                     <CommentModal video={video}>
-                      <div className="flex flex-col items-center gap-1 cursor-pointer">
+                      <button className="flex flex-col items-center gap-1">
                         <MenuItem
                           icon={<ChatBubbleLeftRightIcon className="h-6 w-6" />}
                           label="Comments"
                           subtext={video.num_comments.toString()}
                         />
-                      </div>
+                      </button>
                     </CommentModal>
                     <Link
                       href={video.video_url}
