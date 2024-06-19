@@ -14,6 +14,7 @@ import {
   VideoCameraIcon,
 } from "@heroicons/react/24/outline";
 import Link from "next/link";
+import { CommentModal } from "./comment-modal";
 
 const MenuItem = ({
   icon,
@@ -76,18 +77,15 @@ export default function VideoDisplay() {
                     </p>
                   </div>
                   <div className="flex items-center justify-end gap-3">
-                    <Link
-                      href={video.video_url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex flex-col items-center gap-1"
-                    >
-                      <MenuItem
-                        icon={<ChatBubbleLeftRightIcon className="h-6 w-6" />}
-                        label="Comments"
-                        subtext={video.num_comments.toString()}
-                      />
-                    </Link>
+                    <CommentModal video={video}>
+                      <div className="flex flex-col items-center gap-1">
+                        <MenuItem
+                          icon={<ChatBubbleLeftRightIcon className="h-6 w-6" />}
+                          label="Comments"
+                          subtext={video.num_comments.toString()}
+                        />
+                      </div>
+                    </CommentModal>
                     <Link
                       href={video.video_url}
                       target="_blank"
