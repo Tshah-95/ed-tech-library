@@ -38,7 +38,7 @@ const MenuItem = ({
 
 // Memoize the VideoDisplay component to prevent unnecessary re-renders
 // when the branding assets animate on an interval
-const VideoDisplay = memo(() => {
+const VideoDisplay = memo(function VidDisplay() {
   const { data } = useSWR<video[] | null>(`/api/videos`, fetcher);
   const [search, setSearch] = useState("");
 
