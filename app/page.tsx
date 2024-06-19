@@ -103,11 +103,11 @@ export default function Home() {
           custom={3}
           animate="slide"
           variants={variants}
-          className="mt-3 md:mt-5 flex items-center w-full gap-3 md:gap-5"
+          className="mt-3 md:mt-5 flex items-center justify-center w-full gap-3 md:gap-5"
         >
           <p className="text-slate-400 block text-sm md:text-lg lg:text-xl font-normal max-w-[30em]">
-            Welcome to the only open-source education platform built by
-            educators for the global learning community. Free. Forever. Always.
+            Welcome to the only open-source video platform built by educators
+            for the global learning community. Free. Forever. Always.
           </p>
           <Image
             src="/books_edited.png"

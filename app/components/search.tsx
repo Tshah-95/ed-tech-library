@@ -30,7 +30,7 @@ export default function Search({
           aria-hidden="true"
         >
           <MagnifyingGlassIcon
-            className="mr-3 mt-1 h-4 w-4 text-gray-400"
+            className="mr-3 h-5 w-5 text-gray-400"
             aria-hidden="true"
           />
         </div>
