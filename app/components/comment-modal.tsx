@@ -79,8 +79,8 @@ export const CommentModal = ({
             </div>
             <input
               type="text"
-              name="search"
-              id="search"
+              name="comment"
+              id="comment"
               className="h-10 mt-[25px] block w-full rounded-md border border-gray-200 pl-9 focus:border-brand-secondary focus:ring-brand-secondary sm:text-sm text-brand-black"
               placeholder={"Join the discussion with a comment..."}
               onChange={(e) => setSearchValue(e.target.value)}
